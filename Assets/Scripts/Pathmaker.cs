@@ -7,6 +7,7 @@ public class Pathmaker : MonoBehaviour
     private int counter = 0;
     public Transform floorPrefab;
     public Transform pathmakerSquarePrefab;
+    public LayerMask tileLayerMask; // Filter to check objects only on specific layers
 
     // "static" means a variable is shared across all instances
     public static int globalTileCount = 0; // Tracks global tile count
@@ -29,10 +30,13 @@ public class Pathmaker : MonoBehaviour
             {
                 Instantiate(pathmakerSquarePrefab, transform.position, Quaternion.identity); // Spawn pathmaker at current location
             }
-            Instantiate(floorPrefab, transform.position, Quaternion.identity); // Spawn a floor tile
+            if (!Physics2D.OverlapCircle(transform.position, 0.1f, tileLayerMask))
+            {
+                Instantiate(floorPrefab, transform.position, Quaternion.identity); // Spawn a floor tile}
+                globalTileCount++;
+            }
             transform.Translate(Vector2.up); // Move up X units (in 2D)
             counter++; // add to the counter
-            globalTileCount++;
         }
         else
         {
