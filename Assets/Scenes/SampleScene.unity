@@ -358,8 +358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fd255846924a244bdc9f71cf232ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorPrefab: {fileID: 8098419431977248374, guid: 6dbfe36a7c4a298449bafdd6fe193e41, type: 3}
-  pathmakerSquarePrefab: {fileID: 407599417703994337, guid: dcbbd72098833c44daf1951864986471, type: 3}
+  floorPrefabs:
+  - {fileID: 8098419431977248374, guid: 6dbfe36a7c4a298449bafdd6fe193e41, type: 3}
+  - {fileID: 8098419431977248374, guid: bf76ce768ea4fb6499ca502639ce9275, type: 3}
+  - {fileID: 8098419431977248374, guid: e801d38cdcb125d48b5d3430d91d706c, type: 3}
+  pathmakerPrefab: {fileID: 0}
   tileLayerMask:
     serializedVersion: 2
     m_Bits: 64
