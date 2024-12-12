@@ -7,10 +7,12 @@ public class Pathmaker : MonoBehaviour
     private int counter = 0;
     private int maxLifetime; // The lifetime for pathmaker
     public Transform[] floorPrefabs; //Array for types of floor
+    public Transform[] obstaclePrefabs; // Array for obstacles
     //public Transform floorPrefab;
+    public static List<Vector2> tilePositions = new List<Vector2>();
     public Transform pathmakerPrefab;
     public LayerMask tileLayerMask; // Filter to check objects only on specific layers
-
+    private DynamicCameraScaler cameraScaler;
     // "static" means a variable is shared across all instances
     public static int globalTileCount = 0; // Tracks global tile count
     public static int maxTiles = 1500; // Maximum global tile count
@@ -19,11 +21,28 @@ public class Pathmaker : MonoBehaviour
     {
         int randomIndex = Random.Range(0, floorPrefabs.Length); // Random.Range will generates a valid index from 0 to the (array - 1)
         Instantiate(floorPrefabs[randomIndex], transform.position, Quaternion.identity);
+
+        if (cameraScaler != null)
+        {
+            cameraScaler.UpdateBounds(transform.position);
+        }
+
+        float obstacleChance = 0.1f; // Chance of spawning the obstacle
+        if (Random.value < obstacleChance)
+        {
+            // Check if postion is clear
+            if (!Physics2D.OverlapCircle(transform.position, 0.1f, tileLayerMask))
+            {
+                int randomObstacleIndex = Random.Range(0, obstaclePrefabs.Length); // Choose a random obstacle in the array
+                Instantiate(obstaclePrefabs[randomObstacleIndex], transform.position, Quaternion.identity); // Spawns said obstacle
+            }
+        }
     }
 
     void Start()
     {
         maxLifetime = Random.Range(1000, 2000); // path maker spawns min / max amount of tile before destroying itself (maximum tile limit still applies)
+        cameraScaler = FindObjectOfType<DynamicCameraScaler>();
     }
     void Update()
     {

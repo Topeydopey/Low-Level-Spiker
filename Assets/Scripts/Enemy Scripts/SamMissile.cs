@@ -59,7 +59,8 @@ public class SamMissile : MonoBehaviour
         if (collision.CompareTag("Chaff"))
         {
             Debug.Log("Missile distracted by chaff!");
-            Destroy(gameObject); // Destroy the missile
+            // Trigger explosion effect
+            Explode();
         }
     }
 

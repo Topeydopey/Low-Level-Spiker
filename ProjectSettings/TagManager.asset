@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SA2
   - Chaff
+  - Obstacle
   layers:
   - Default
   - TransparentFX

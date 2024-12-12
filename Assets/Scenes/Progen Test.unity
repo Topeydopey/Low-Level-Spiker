@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -259,6 +260,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20332ce983af13438dea2fc6455fafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraToScale: {fileID: 519420031}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,10 +373,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorPrefabs:
-  - {fileID: 8098419431977248374, guid: 6dbfe36a7c4a298449bafdd6fe193e41, type: 3}
-  - {fileID: 8098419431977248374, guid: bf76ce768ea4fb6499ca502639ce9275, type: 3}
-  - {fileID: 8098419431977248374, guid: e801d38cdcb125d48b5d3430d91d706c, type: 3}
-  pathmakerPrefab: {fileID: 0}
+  - {fileID: 8098419431977248374, guid: 46dae55553e0dea4fa7a941cdf7f807d, type: 3}
+  - {fileID: 8098419431977248374, guid: c169dc395deb49540875bc24c3b07175, type: 3}
+  - {fileID: 8098419431977248374, guid: cd7a124088242f8438aab257cd068f1a, type: 3}
+  - {fileID: 8098419431977248374, guid: 36b0cff7456b577478f1c75ada4bb06d, type: 3}
+  - {fileID: 8098419431977248374, guid: b5145447b5fd5564bb2c0513ffa1eb0b, type: 3}
+  obstaclePrefabs:
+  - {fileID: 7987650112403848288, guid: bfa3c240489f7d1478ad0d196ff79ea8, type: 3}
+  - {fileID: 8098419431977248374, guid: 91cd3d0ac6f265e489cfea3e064cb205, type: 3}
+  - {fileID: 8098419431977248374, guid: b186f6dc31353724e8cc1acb40c0cba3, type: 3}
+  pathmakerPrefab: {fileID: 407599417703994337, guid: dcbbd72098833c44daf1951864986471, type: 3}
   tileLayerMask:
     serializedVersion: 2
     m_Bits: 64
