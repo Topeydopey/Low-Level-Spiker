@@ -13,8 +13,8 @@ public class SamMissile : MonoBehaviour
 
     void Start()
     {
-        // Find the player object
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        // Find the player object by locating the specific component
+        PlayerMovement player = FindObjectOfType<PlayerMovement>();
         if (player != null)
         {
             target = player.transform;
@@ -45,20 +45,20 @@ public class SamMissile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the missile hits the player
-        if (collision.CompareTag("Player"))
+        // Check if the missile hits the player by verifying the PlayerMovement component
+        if (collision.GetComponent<PlayerMovement>() != null)
         {
-            // Add logic for damaging the player here
             Debug.Log("Missile hit the player!");
 
             // Trigger explosion effect
             Explode();
         }
 
-        // Check if the missile hits chaff
-        if (collision.CompareTag("Chaff"))
+        // Check if the missile hits chaff by verifying the Chaff component
+        if (collision.GetComponent<Chaff>() != null)
         {
             Debug.Log("Missile distracted by chaff!");
+
             // Trigger explosion effect
             Explode();
         }

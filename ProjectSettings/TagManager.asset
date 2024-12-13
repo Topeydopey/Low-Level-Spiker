@@ -7,6 +7,8 @@ TagManager:
   - SA2
   - Chaff
   - Obstacle
+  - Pathmaker
+  - Tile
   layers:
   - Default
   - TransparentFX

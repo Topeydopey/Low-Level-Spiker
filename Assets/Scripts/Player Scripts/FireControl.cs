@@ -2,28 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireControl : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public GameObject hellfirePrefab;
-    public Transform hardPoint;
-    public GameObject chaffPrefab;
-    public float cooldown = 5f;
-    private float nextUseTime = 0f;
+    public GameObject shellPrefab; // Prefab for the tank shell
+    public Transform firingPoint; // Position from which the shell is fired
+    public float shellSpeed = 10f; // Speed of the shell
 
     void Update()
     {
+        // Fire the shell when Space is pressed
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(hellfirePrefab, hardPoint.position, hardPoint.rotation); // Spawns missile at the hardpoint with the same rotation
-        }
-        if (Input.GetKeyDown(KeyCode.F) && Time.time > nextUseTime)
-        {
-            DeployChaff();
-            nextUseTime = Time.time + cooldown; // Start cooldown
+            FireShell();
         }
     }
-    void DeployChaff()
+
+    void FireShell()
     {
-        Instantiate(chaffPrefab, transform.position, Quaternion.identity);
+        // Instantiate the shell at the firing point
+        GameObject shell = Instantiate(shellPrefab, firingPoint.position, firingPoint.rotation);
+
+        // Apply velocity to the shell to move it forward
+        Rigidbody2D shellBody = shell.GetComponent<Rigidbody2D>();
+        if (shellBody != null)
+        {
+            shellBody.velocity = firingPoint.up * shellSpeed; // Move forward relative to the firing point's up direction
+        }
     }
 }

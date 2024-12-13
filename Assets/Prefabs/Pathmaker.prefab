@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 407599417703994337}
   - component: {fileID: 4566677508920236640}
-  - component: {fileID: 555565330419921077}
+  - component: {fileID: 5352012495897074959}
   m_Layer: 0
   m_Name: Pathmaker
-  m_TagString: Untagged
+  m_TagString: Pathmaker
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &555565330419921077
+--- !u!114 &5352012495897074959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,8 +94,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4996626341354488911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cea2db1a93135144fa4727dfce6e1dea, type: 3}
+  m_Script: {fileID: 11500000, guid: 20fd255846924a244bdc9f71cf232ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorPrefab: {fileID: 8098419431977248374, guid: 6dbfe36a7c4a298449bafdd6fe193e41, type: 3}
-  pathmakerSquarePrefab: {fileID: 407599417703994337}
+  floorPrefabs:
+  - {fileID: 8098419431977248374, guid: 46dae55553e0dea4fa7a941cdf7f807d, type: 3}
+  - {fileID: 8098419431977248374, guid: c169dc395deb49540875bc24c3b07175, type: 3}
+  - {fileID: 8098419431977248374, guid: cd7a124088242f8438aab257cd068f1a, type: 3}
+  obstaclePrefabs:
+  - {fileID: 5247225745947044120, guid: acdc4d24f5f136b4c8a9dcd36b0d6293, type: 3}
+  - {fileID: 8098419431977248374, guid: 91cd3d0ac6f265e489cfea3e064cb205, type: 3}
+  - {fileID: 8098419431977248374, guid: b186f6dc31353724e8cc1acb40c0cba3, type: 3}
+  pathmakerPrefab: {fileID: 407599417703994337}
+  tileLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  clusterSize: 1
+  squareSize: 2
+  turnProbability: 0.5831571
+  branchProbability: 0.05
+  sa2SpawnProbability: 0.06336038
+  generationSound: {fileID: 8300000, guid: e7ebdb42abc0ac44fb1df99e03c4c487, type: 3}
+  finishedSound: {fileID: 8300000, guid: 307c27c4615183743af7933c33f20ae1, type: 3}

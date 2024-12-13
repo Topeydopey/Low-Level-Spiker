@@ -9,20 +9,23 @@ public class HellfireMissile : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject, lifetime);
+        Destroy(gameObject, lifetime); // Destroy the missile after its lifetime expires
     }
 
     void Update()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
+        // Move the missile forward in the direction it is facing
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("SA2"))
+        // Check if the missile hits an SA-2 by verifying the SA2 component
+        if (other.GetComponent<Sa2Site>() != null)
         {
-            Destroy(other.gameObject); // Destroy enemy
-            Destroy(gameObject); // Destroy self
+            Debug.Log("Hellfire hit the SA-2 site!");
+            Destroy(other.gameObject); // Destroy the SA-2
+            Destroy(gameObject);       // Destroy the missile
         }
     }
 }
